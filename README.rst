@@ -8,6 +8,6 @@ Installation
 
 Two steps:
 
-    git clone git://github.com/nsmgr8/dotfish.git ~/code/dotfish
+    $ git clone git://github.com/nsmgr8/dotfish.git ~/code/dotfish
     
-    ln -s ~/code/dotfish/config.fish ~/.config/fish/
+    $ ln -s ~/code/dotfish/config.fish ~/.config/fish/
