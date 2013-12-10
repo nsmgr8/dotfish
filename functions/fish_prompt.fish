@@ -17,9 +17,9 @@ set -g current_bg NONE
 set branch_glyph            \uE0A0
 set ln_glyph                \uE0A1
 set padlock_glyph           \uE0A2
-set right_black_arrow_glyph \uE0B0
+set right_black_arrow_glyph \u2B80
 set right_arrow_glyph       \uE0B1
-set left_black_arrow_glyph  \uE0B2
+set left_black_arrow_glyph  \u2B82
 set left_arrow_glyph        \uE0B3
 
 # Additional glyphs
