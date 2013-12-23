@@ -1,4 +1,4 @@
-set PATH . $HOME/bin \
+set PATH $HOME/bin \
     /usr/local/share/npm/bin \
     /usr/local/bin /usr/local/sbin \
     /usr/bin /usr/sbin \
@@ -6,3 +6,4 @@ set PATH . $HOME/bin \
     /usr/texbin /usr/games
 
 set TERM xterm-256color
+set EDITOR vim

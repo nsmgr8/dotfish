@@ -161,7 +161,7 @@ function __bobthefish_prompt_status -d 'the symbols for a non zero exit status, 
   end
 
   # Jobs display
-  set njobs (math (jobs | wc -l))
+  set njobs (jobs | wc -l | tr -d ' ')
   if [ $njobs -gt 0 ]
     set bg_jobs "$bg_job_glyph$njobs "
   end
@@ -202,7 +202,7 @@ function __bobthefish_prompt_git -d 'Display the actual git state'
   set -l ahead   (command git branch -v 2> /dev/null | grep -Eo '^\* [^ ]* *[^ ]* *\[[^]]*\]' | grep -Eo '\[[^]]*\]$' | awk 'ORS="";/ahead/ {print "+"} /behind/ {print "-"}' | sed -e 's/+-/±/')
 
   set -l new (command git ls-files --other --exclude-standard);
-  test "$new"; and set new '+'
+  test "$new"; and set new '…'
 
   set -l flags   "$dirty$staged$stashed$ahead$new"
   test "$flags"; and set flags " $flags"
@@ -228,13 +228,7 @@ function __bobthefish_prompt_git -d 'Display the actual git state'
 
   set -l project_pwd  (__bobthefish_project_pwd)
   if test "$project_pwd"
-    if test -w "$PWD"
-      __bobthefish_start_segment 333 999
-    else
-      __bobthefish_start_segment $med_red $lt_red
-    end
-
-    echo -n -s $project_pwd ' '
+    __bobthefish_path_segment $project_pwd
   end
 end
 
@@ -249,6 +243,14 @@ function __bobthefish_virtualenv -d 'Display the active virtualenv'
   end
 end
 
+function __bobthefish_chroot -d 'Display the active chroot'
+  [ -f /etc/debian_chroot ]; and set debian_chroot (cat /etc/debian_chroot)
+  if set -q debian_chroot
+    __bobthefish_start_segment $dk_red $lt_red
+    echo -n -s "$debian_chroot "
+  end
+end
+
 
 # ===========================
 # Apply theme
@@ -257,6 +259,7 @@ end
 function fish_prompt
   set -g RETVAL $status
   __bobthefish_prompt_status
+  __bobthefish_chroot
   __bobthefish_virtualenv
   __bobthefish_prompt_user
   if __bobthefish_in_git
