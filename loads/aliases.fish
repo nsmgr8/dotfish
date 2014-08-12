@@ -8,4 +8,4 @@ alias pc "pushd (pwd)"
 alias pu "pushd"
 alias po "popd"
 
-alias http 'python -m SimpleHTTPServer'
+alias serve_http 'python -m SimpleHTTPServer'
