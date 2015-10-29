@@ -1,5 +1,4 @@
-set left_black_arrow_glyph  \u2B82
-set left_arrow_glyph        \uE0B3
+set left_black_arrow_glyph  \uE0B2
 
 function fish_right_prompt
   cmd_time_taken
