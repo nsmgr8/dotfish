@@ -6,5 +6,6 @@ function pyclean
     set path2CLEAN .
   end
 
+  find $path2CLEAN -name __pycache__ -type d | xargs rm -rf
   find $path2CLEAN -name "*.py[co]" -type f -delete
 end
