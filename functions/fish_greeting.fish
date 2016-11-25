@@ -3,6 +3,6 @@ function fish_greeting
   uname -npsr
   set_color $fish_color_quote
   uptime
-  #fortune -s | cowsay
+  fortune -s | cowsay
   set_color normal
 end
